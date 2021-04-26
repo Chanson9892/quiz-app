@@ -24,7 +24,7 @@ const App = () => {
   const [score, setScore] = useState(0)
   const [gameOver, setGameOver] = useState(true)
 
-  console.log(questions)
+  // console.log(questions)
 
   const startTrivia = async () => {
     setLoading(true)
@@ -37,11 +37,12 @@ const App = () => {
     setQuestions(newQuestions)
     setScore(0)
     setUserAnswers([])
+    setNumber(0)
     // will let the questions go through
     setLoading(false)
   }
 
-  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const checkAnswer = (e: any) => {
     if (!gameOver) {
       // User's answer
       const answer = e.currentTarget.value
@@ -64,6 +65,7 @@ const App = () => {
   }
 
   const nextQuestion = () => {
+    // move to next question
     const nextQ = number + 1
 
     if (nextQ === TOTAL_QUESTIONS) {
@@ -84,7 +86,7 @@ const App = () => {
       ) : null}
 
       {/* show score and loading questions */}
-      {!gameOver ? <p className="score">Score:</p> : null }
+      {!gameOver ? <p className="score">Score: {score}</p> : null }
       {loading ? <p>Loading Questions ...</p> : null}
 
       {/* show answers */}
