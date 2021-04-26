@@ -6,7 +6,7 @@ import QuestionCard from './components/QuestionCard'
 //types
 import {QuestionsState, Difficulty} from './API'
 
-type AnswerObject = {
+export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
@@ -42,7 +42,7 @@ const App = () => {
     setLoading(false)
   }
 
-  const checkAnswer = (e: any) => {
+  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver) {
       // User's answer
       const answer = e.currentTarget.value
